@@ -34,6 +34,14 @@ var run = function() {
     undefined, function(err, result) {
       console.log('script verified successfully? ', result)
   });
+
+  // using a script in hex directly
+  var scriptPubKeyHex = '26554e5a49500370e53982a1d5201829562c5d9eebf256eb755b92c9b1449afd99f9f8c326563175aa2034b4f6042e1bcfc6182ee2727a3d0069a9071385bc07b318f57e77a28ffa13ac87';
+  scriptPubKey = new Script(new Buffer(scriptPubKeyHex, 'hex'));
+  si.verifyFull(scriptSig, scriptPubKey, undefined, undefined,
+    undefined, function(err, result) {
+      console.log('script verified successfully? ', result)
+  });
 };
 
 module.exports.run = run;
